@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <span>SkillShare</span>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-fire"></i> Popular Skills</a></li>
+                    <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            <div class="profile">
+                <div class="profile-icon" id="profileToggle">
+                    <img src="{{ url_for('static', filename='profile_pics/' + current_user.profile_pic) }}" alt="Profile Icon">
+                    <span>{{ current_user.username }}</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="profile-options" id="profileOptions">
+                    <a href="{{ url_for('profile', user_id=current_user.id) }}"><i class="fas fa-user"></i> Open Profile</a>
+                    <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <button id="sidebarToggle" class="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search topics...">
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="content-header">
+                    <h2>Topics</h2>
+                    <a href="{{ url_for('create_topic') }}" class="add-skill-button">
+                        <i class="fas fa-plus"></i> Add Skill
+                    </a>
+                </div>
+                
+                <div class="topics-container">
+                    {% for topic_data in topic_data %}
+                        <div class="topic">
+                            <div class="topic-header">
+                                <h4>{{ topic_data.topic[1] }}</h4>
+                                <span class="topic-date">{{ topic_data.topic[5] }}</span>
+                            </div>
+                            <p class="topic-description">{{ topic_data.topic[2] }}</p>
+                            <p class="topic-author"><i class="fas fa-user"></i> <a href="{{ url_for('profile', user_id=topic_data.topic[4]) }}">{{ topic_data.topic[3] }}</a></p>
+                            
+                            <div class="topic-actions">
+                                <button class="reply-toggle" data-topic-id="{{ topic_data.topic[0] }}">
+                                    <i class="fas fa-comment"></i> Replies ({{ topic_data.replies|length }})
+                                </button>
+                                <button class="like-button" data-topic-id="{{ topic_data.topic[0] }}">
+                                    <i class="fas fa-heart"></i> <span class="like-count">0</span>
+                                </button>
+                            </div>
+                            
+                            <div class="replies" id="replies-{{ topic_data.topic[0] }}">
+                                {% if topic_data.replies %}
+                                    {% for reply in topic_data.replies %}
+                                        <div class="reply">
+                                            <div class="reply-header">
+                                                <strong>{{ reply[2] }}</strong>
+                                                <span class="reply-date">{{ reply[3] }}</span>
+                                            </div>
+                                            <p>{{ reply[1] }}</p>
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <p class="no-replies">No replies yet.</p>
+                                {% endif %}
+                               
+                                <form action="{{ url_for('reply', topic_id=topic_data.topic[0]) }}" method="post" class="reply-form">
+                                    <textarea name="reply_content" placeholder="Add a reply..." required></textarea>
+                                    <button type="submit"><i class="fas fa-paper-plane"></i> Reply</button>
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

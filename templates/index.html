@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>CHIDIYA - Connect, Share, Learn</title>
+</head>
+<body>
+    <div class="birds-container">
+        <div class="bird-animation"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-feather-alt"></i>
+                    <span>CHIDIYA</span>
+                </div>
+                <div class="nav-links" id="navLinks">
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="auth-buttons">
+                    <a href="{{ url_for('login') }}" class="btn btn-outline">Login</a>
+                    <a href="{{ url_for('register') }}" class="btn btn-primary">Sign Up</a>
+                </div>
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Welcome to <span class="highlight">CHIDIYA</span></h1>
+                    <p class="tagline">Soar High, Connect Deep, Share Skills</p>
+                    <p class="description">
+                        Join our vibrant community of skill-sharing enthusiasts. 
+                        Learn from experts, share your knowledge, and grow together 
+                        like birds in a harmonious flock.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="{{ url_for('register') }}" class="btn btn-primary btn-large">
+                            <i class="fas fa-user-plus"></i> Join Free
+                        </a>
+                        <a href="#features" class="btn btn-secondary btn-large">
+                            <i class="fas fa-info-circle"></i> Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="bird-silhouette"></div>
+                </div>
+            </section>
+
+            <section id="features" class="features">
+                <h2>Why Choose CHIDIYA?</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Vibrant Community</h3>
+                        <p>Connect with like-minded individuals eager to share their skills and knowledge.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Learn Anything</h3>
+                        <p>Access diverse topics and skills taught by passionate community members.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <h3>Share Knowledge</h3>
+                        <p>Create topics, share your expertise, and help others grow in their journey.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Safe Environment</h3>
+                        <p>Enjoy a respectful and supportive space for learning and collaboration.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="about">
+                <div class="about-content">
+                    <h2>About CHIDIYA</h2>
+                    <p>
+                        CHIDIYA, meaning "bird" in Hindi, symbolizes freedom, perspective, and community. 
+                        Just as birds fly together in flocks, supporting and guiding each other, 
+                        our platform brings people together to share skills, knowledge, and experiences.
+                    </p>
+                    <p>
+                        Founded with the belief that everyone has something valuable to teach and learn, 
+                        CHIDIYA creates spaces for meaningful connections across diverse interests and expertise.
+                        Join our flock and discover the joy of collaborative learning!
+                    </p>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number" id="userCount">5000+</div>
+                        <div class="stat-label">Members</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="topicCount">2500+</div>
+                        <div class="stat-label">Topics</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="skillCount">300+</div>
+                        <div class="stat-label">Skills</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="testimonials" class="testimonials">
+                <h2>What Our Community Says</h2>
+                <div class="testimonial-slider" id="testimonialSlider">
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"CHIDIYA helped me discover my passion for teaching. Now I share my web development skills with hundreds of eager learners!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="{{ url_for('static', filename='img/profile1.png') }}" alt="Profile">
+                            <div>
+                                <h4>Rahul Sharma</h4>
+                                <p>Web Developer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"I learned more about digital marketing in two months on CHIDIYA than I did in a year of traditional courses. The community is amazing!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="{{ url_for('static', filename='img/profile2.png') }}" alt="Profile">
+                            <div>
+                                <h4>Priya Patel</h4>
+                                <p>Marketing Specialist</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"The supportive environment at CHIDIYA gave me the confidence to share my photography skills. Now I have my own following of students!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="{{ url_for('static', filename='img/profile3.png') }}" alt="Profile">
+                            <div>
+                                <h4>Amit Kumar</h4>
+                                <p>Photographer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button id="prevBtn" class="slider-btn"><i class="fas fa-chevron-left"></i></button>
+                    <div class="slider-dots" id="sliderDots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button id="nextBtn" class="slider-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <section id="contact" class="contact">
+                <h2>Join Our Flock Today</h2>
+                <p>Ready to start your journey with CHIDIYA? Create your account now and start connecting!</p>
+                <a href="{{ url_for('register') }}" class="btn btn-primary btn-large">
+                    <i class="fas fa-feather-alt"></i> Get Started
+                </a>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-feather-alt"></i>
+                    <span>CHIDIYA</span>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h3>Platform</h3>
+                        <ul>
+                            <li><a href="#">Features</a></li>
+                            <li><a href="#">Community</a></li>
+                            <li><a href="#">Topics</a></li>
+                            <li><a href="#">Skills</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Press</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CHIDIYA. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+</html>
